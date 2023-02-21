@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>WebRadio</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js"></script>
+
+    </head>
+    <body>
+        <div class="logo">
+            <h2>time travel webradio</h2>
+        </div>
+        <audio class="player" id="player" autoplay controls preload></audio>
+        <div class="channels">
+            <ul id="channelList">
+            </ul>
+        </div>
+        <div><button id="past">i wish to live in the past</button></div>
+        <div><button id="present">return me to the present</button></div>
+        <div><button id="future">i wish to move to the future</button></div>
+        <div><button id="random">play a random web radio station</button></div>
+        <hr>
+        <p id="currentstation"></p>
+
+        <div class="footer">
+            <hr>
+            <p>supersonique!</p>
+        </div>
+        <script> // this code stolen, doesn't work when I delete it
+            webradio.player().addEventListener("volumechange", function (){
+                webradio.set_value("playervolume", webradio.player().volume);
+            }, false);
+            webradio.player().volume = webradio.get_value("playervolume");
+        </script>
+        <script src="main.js"></script> // my code
+        <script>randomStation()</script>
+
+    </body>
+</html>
