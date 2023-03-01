@@ -19,6 +19,22 @@ element.addEventListener("click", function(){
     randomStation()
 }, false)
 
+// error handling below - prevents silence by setting up EventListener to catch errors when file fails to load from randomStation(), and then calls the randomStation() function again
+     document.getElementById("player").addEventListener('error', function failed(e) {
+        // audio playback failed - show a message saying why
+        // to get the source of the audio element use $(this).src
+        switch (e.target.error.code) {
+          case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED: // rescues the audio when the CORS or GET errors happen
+            console.log('The video audio not be loaded, either because the server or network failed or because the format is not supported.');
+            console.log("error", e.target.id)
+            randomStation()
+            break;
+          default:
+            console.log('An unknown error occurred.');
+            break;
+        }
+      }, false);
+
 
 function randomStation() {
     let stationchoice = frenchStations
